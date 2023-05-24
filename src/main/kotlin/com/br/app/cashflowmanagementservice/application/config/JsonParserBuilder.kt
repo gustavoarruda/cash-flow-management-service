@@ -30,7 +30,7 @@ object JsonParserBuilder {
         .registerModule(SimpleModule())
         .also {
             val format = DateTimeFormatterBuilder()
-                .appendOptional(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+                .appendOptional(DateTimeFormatter.ofPattern("yyyy-MM-dd' 'HH:mm:ss"))
                 .toFormatter()
             val dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             val javaTimeModule = JavaTimeModule()
