@@ -47,11 +47,11 @@ serviços de banco de dados, kafka e do Kafdrop para acessar cliente do kafka.
 
 ### Fluxo de Lançamentos:
 
-[![modelo](docs/solucao-fluxo-lancamentos.png)](https://dbdiagram.io/d/5e285bfd9e76504e0ef08a7c)
+![fluxo](docs/solucao-fluxo-lancamentos.png)
 
 ### Fluxo de Relatório Consolidado:
 
-[![modelo](docs/solucao-fluxo-relatorio-consolidado.png)](https://dbdiagram.io/d/5e285bfd9e76504e0ef08a7c)
+![fluxo](docs/solucao-fluxo-relatorio-consolidado.png)
 
 ### Como inciar o serviço:
 
