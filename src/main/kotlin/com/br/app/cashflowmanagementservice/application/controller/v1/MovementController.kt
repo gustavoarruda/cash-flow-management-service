@@ -17,4 +17,8 @@ class MovementController(
     @ResponseStatus(HttpStatus.CREATED)
     fun entry(@RequestBody movements: List<MovementPayload>) = movementService.entry(movements.map { it.toDomain() })
 
+    @GetMapping("/movement")
+    @ResponseStatus(HttpStatus.OK)
+    fun getList() = movementService.getList()
+
 }

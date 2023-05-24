@@ -25,3 +25,13 @@ fun Movement.toEntity() = MovementEntity(
     value = value,
     createdAt = createdAt
 )
+
+fun MovementEntity.toDomain() = Movement(
+    id = id,
+    description = description,
+    personId = personId,
+    date = date,
+    typeMovement = TypeMovement.fromType(typeMovement),
+    value = value,
+    createdAt = createdAt
+)

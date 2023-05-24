@@ -11,7 +11,7 @@ import java.util.function.Supplier
 class MovementStreamProducerImpl : Supplier<Flux<MovementStreamPayload>>, MovementStreamProducer {
     private val sink = Sinks.many().unicast().onBackpressureBuffer<MovementStreamPayload>()
     override fun get() = sink.asFlux()
-    override fun produce(infoPayload: MovementStreamPayload) {
-        sink.emitNext(infoPayload, Sinks.EmitFailureHandler.FAIL_FAST)
+    override fun produce(movementMessagePayload: MovementStreamPayload) {
+        sink.emitNext(movementMessagePayload, Sinks.EmitFailureHandler.FAIL_FAST)
     }
 }

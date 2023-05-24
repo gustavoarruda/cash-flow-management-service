@@ -1,6 +1,7 @@
 package com.br.app.cashflowmanagementservice.domain.service.impl
 
 import com.br.app.cashflowmanagementservice.domain.entities.Movement
+import com.br.app.cashflowmanagementservice.domain.entities.toDomain
 import com.br.app.cashflowmanagementservice.domain.entities.toEntity
 import com.br.app.cashflowmanagementservice.domain.repository.MovementRepository
 import com.br.app.cashflowmanagementservice.domain.service.MovementService
@@ -31,5 +32,9 @@ class MovementServiceImpl(
                 )
             }
         }.onFailure { throw it }
+    }
+
+    override fun getList(): List<Movement> {
+        return movementRepository.findAll().map { it.toDomain() }
     }
 }
