@@ -1,0 +1,73 @@
+
+# Spring Boot configuration
+spring:
+  application:
+    name: cash-flow-management-service
+  profiles:
+    active: development
+  # Security configuration
+  security:
+    user:
+      name: user
+      password: user
+  # Database
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=cash_flow_management_service
+    username: postgres
+    password: postgres
+  # JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: update # When you launch the application for the first time - switch "none" at "create"
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: true
+
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      acks: all
+      transaction-id-prefix: tx-
+      properties:
+        enable.idempotence: true
+        transactional.id: tran-id-1
+  cloud:
+    stream:
+      default:
+        contentType: application/json
+      function:
+        definition: movementProducer
+      default-binder: kafka
+      kafka:
+        binder:
+          replicationFactor: 1
+          minPartitionCount: 1
+          auto-create-topics: true
+          auto-add-partitions: true
+          producer-properties:
+            key:
+              serializer: org.apache.kafka.common.serialization.StringSerializer
+            value:
+              serializer: com.br.app.cashflowmanagementservice.application.config.CustomKafkaSerializer
+      bindings:
+        movementProducer-out-0:
+          destination: cash-flow_consolidate-data-provider
+          producer:
+            useNativeEncoding: true
+
+# Logger configuration
+logging:
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+  level:
+    org.springframework: info
+    org.hibernate: debug
+# Server configuration
+server:
+  port: 8094 #set your port

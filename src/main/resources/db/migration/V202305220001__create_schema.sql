@@ -1,0 +1,1 @@
+CREATE SCHEMA IF NOT EXISTS cash_flow_management_service;
