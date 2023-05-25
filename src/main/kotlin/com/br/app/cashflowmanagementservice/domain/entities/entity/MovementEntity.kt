@@ -1,6 +1,7 @@
 package com.br.app.cashflowmanagementservice.domain.entities.entity
 
 import org.springframework.format.annotation.DateTimeFormat
+import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime
 import javax.persistence.*
@@ -14,7 +15,7 @@ data class MovementEntity(
     val personId: String,
     val date: LocalDate,
     val typeMovement: String,
-    val value: Double,
+    val value: BigDecimal,
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     val createdAt: LocalDateTime?
 )

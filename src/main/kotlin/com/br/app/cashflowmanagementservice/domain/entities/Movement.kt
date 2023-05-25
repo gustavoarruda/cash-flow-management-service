@@ -2,6 +2,7 @@ package com.br.app.cashflowmanagementservice.domain.entities
 
 import com.br.app.cashflowmanagementservice.application.enums.TypeMovement
 import com.br.app.cashflowmanagementservice.domain.entities.entity.MovementEntity
+import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.*
@@ -12,7 +13,7 @@ data class Movement(
     val personId: String,
     val date: LocalDate,
     val typeMovement: TypeMovement,
-    val value: Double,
+    val value: BigDecimal,
     val createdAt: LocalDateTime? = LocalDateTime.now()
 )
 
