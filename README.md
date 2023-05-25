@@ -99,5 +99,5 @@ curl --location 'localhost:8094/v1/movement' \
 ### - **Endpoint da API para listar os lançamentos:**
 
 ```
-curl --location 'localhost:8094/v1/movement'
+curl --location 'localhost:8094/v1/movement?date=2023-05-25&page=0&size=10'
 ```

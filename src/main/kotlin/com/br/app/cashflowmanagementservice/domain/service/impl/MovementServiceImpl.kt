@@ -7,7 +7,10 @@ import com.br.app.cashflowmanagementservice.domain.repository.MovementRepository
 import com.br.app.cashflowmanagementservice.domain.service.MovementService
 import com.br.app.cashflowmanagementservice.resource.messaging.entity.MovementStreamPayload
 import com.br.app.cashflowmanagementservice.resource.messaging.stream.MovementStreamProducer
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
+
 
 @Service
 class MovementServiceImpl(
@@ -34,7 +37,7 @@ class MovementServiceImpl(
         }.onFailure { throw it }
     }
 
-    override fun getList(): List<Movement> {
-        return movementRepository.findAll().map { it.toDomain() }
+    override fun getList(pageable: Pageable): Page<Movement>? {
+        return movementRepository.findAll(pageable).map { it.toDomain() }
     }
 }

@@ -2,10 +2,16 @@ package com.br.app.cashflowmanagementservice.application.controller.v1
 
 import com.br.app.cashflowmanagementservice.application.entity.MovementPayload
 import com.br.app.cashflowmanagementservice.application.entity.toDomain
+import com.br.app.cashflowmanagementservice.domain.entities.Movement
 import com.br.app.cashflowmanagementservice.domain.service.MovementService
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Sort
+import org.springframework.format.annotation.DateTimeFormat
 import org.springframework.http.HttpStatus
-import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
+import java.time.LocalDate
+
 
 @RequestMapping("/v1/")
 @RestController
@@ -17,8 +23,14 @@ class MovementController(
     @ResponseStatus(HttpStatus.CREATED)
     fun entry(@RequestBody movements: List<MovementPayload>) = movementService.entry(movements.map { it.toDomain() })
 
-    @GetMapping("/movement")
     @ResponseStatus(HttpStatus.OK)
-    fun getList() = movementService.getList()
-
+    @GetMapping("/movement")
+    fun getUsers(
+        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "10") size: Int,
+        @RequestParam(value="date") @DateTimeFormat(pattern="yyyy-MM-dd") date: LocalDate
+    ): Page<Movement>? {
+        val pageRequest: PageRequest = PageRequest.of(page, size)
+        return movementService.getList(pageRequest)
+    }
 }
