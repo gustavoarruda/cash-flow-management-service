@@ -37,7 +37,7 @@ class MovementController(
     @PutMapping("/movement/{id}")
     fun updateMovement(@PathVariable id: String, @RequestBody movement: MovementPayload): ResponseEntity<Movement> {
         val existingMovement = movementService.findById(id)
-        return if (existingMovement != null) {
+        return if (existingMovement.isPresent) {
             movementService.updateMovement(id, movement.toDomain())
             ResponseEntity.ok().build()
         } else {

@@ -10,6 +10,7 @@ import com.br.app.cashflowmanagementservice.resource.messaging.stream.MovementSt
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
+import java.util.*
 
 
 @Service
@@ -41,12 +42,12 @@ class MovementServiceImpl(
         return movementRepository.findAll(pageable).map { it.toDomain() }
     }
 
-    override fun findById(id: String): Movement? {
-        return movementRepository.findById(id).orElse(null).toDomain()
+    override fun findById(id: String): Optional<Movement> {
+        return movementRepository.findById(id).map { it.toDomain() }
     }
 
     override fun updateMovement(id: String, updatedMovement: Movement): Movement? {
-        val existingMovement = movementRepository.findById(id).orElse(null).toDomain()
+        val existingMovement = findById(id).orElse(null)
         if (existingMovement != null) {
             val movement = existingMovement.copy(
                 typeMovement = updatedMovement.typeMovement,
