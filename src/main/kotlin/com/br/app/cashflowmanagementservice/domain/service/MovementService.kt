@@ -7,4 +7,6 @@ import org.springframework.data.domain.Pageable
 interface MovementService {
     fun entry(movements: List<Movement>)
     fun getList(pageable: Pageable): Page<Movement>?
+    fun findById(id: String): Movement?
+    fun updateMovement(id: String, updatedMovement: Movement): Movement?
 }

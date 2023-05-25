@@ -40,4 +40,25 @@ class MovementServiceImpl(
     override fun getList(pageable: Pageable): Page<Movement>? {
         return movementRepository.findAll(pageable).map { it.toDomain() }
     }
+
+    override fun findById(id: String): Movement? {
+        return movementRepository.findById(id).orElse(null).toDomain()
+    }
+
+    override fun updateMovement(id: String, updatedMovement: Movement): Movement? {
+        val existingMovement = movementRepository.findById(id).orElse(null).toDomain()
+        if (existingMovement != null) {
+            val movement = existingMovement.copy(
+                typeMovement = updatedMovement.typeMovement,
+                date = updatedMovement.date,
+                description = updatedMovement.description,
+                value = updatedMovement.value,
+                personId = updatedMovement.personId,
+            )
+            return movementRepository.save(movement.toEntity()).toDomain()
+        }
+        return null
+    }
+
+
 }
