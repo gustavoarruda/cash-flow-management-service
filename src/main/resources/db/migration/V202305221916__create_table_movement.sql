@@ -5,4 +5,5 @@ CREATE TABLE IF NOT EXISTS cash_flow_management_service.movement (
 	date date NOT NULL,
 	value numeric(20,2),
 	type_movement varchar(1) NOT NULL,
-	created_at date NOT NULL);
+	updated_at TIMESTAMP,
+	created_at TIMESTAMP NULL);

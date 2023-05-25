@@ -13,8 +13,7 @@ data class Movement(
     val personId: String,
     val date: LocalDate,
     val typeMovement: TypeMovement,
-    val value: BigDecimal,
-    val createdAt: LocalDateTime? = LocalDateTime.now()
+    val value: BigDecimal
 )
 
 fun Movement.toEntity() = MovementEntity(
@@ -23,8 +22,7 @@ fun Movement.toEntity() = MovementEntity(
     personId = personId,
     date = date,
     typeMovement = typeMovement.type,
-    value = value,
-    createdAt = createdAt
+    value = value
 )
 
 fun MovementEntity.toDomain() = Movement(
@@ -33,6 +31,5 @@ fun MovementEntity.toDomain() = Movement(
     personId = personId,
     date = date,
     typeMovement = TypeMovement.fromType(typeMovement),
-    value = value,
-    createdAt = createdAt
+    value = value
 )

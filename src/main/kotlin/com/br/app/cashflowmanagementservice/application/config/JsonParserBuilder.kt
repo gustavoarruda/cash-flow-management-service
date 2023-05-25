@@ -38,8 +38,6 @@ object JsonParserBuilder {
             javaTimeModule.addSerializer(LocalDateTime::class.java, LocalDateTimeSerializer(format))
             javaTimeModule.addDeserializer(LocalDateTime::class.java, LocalDateTimeDeserializer(format))
             javaTimeModule.addSerializer(ZonedDateTime::class.java, ZonedDateTimeSerializer(format))
-            javaTimeModule.addSerializer(LocalDate::class.java, LocalDateSerializer(format))
-            javaTimeModule.addDeserializer(LocalDate::class.java, LocalDateDeserializer(format))
             javaTimeModule.addSerializer(LocalDate::class.java, LocalDateSerializer(dateFormat))
             javaTimeModule.addDeserializer(LocalDate::class.java, LocalDateDeserializer(dateFormat))
 
@@ -48,7 +46,7 @@ object JsonParserBuilder {
         }
         .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
         .configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true)
-        .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+        .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true)
         .setSerializationInclusion(JsonInclude.Include.NON_NULL)
         .setDateFormat(StdDateFormat())
 }
