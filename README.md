@@ -72,6 +72,8 @@ serviços de banco de dados, kafka e do Kafdrop para acessar cliente do kafka.
 
 ### Como inciar o serviço:
 
+Após baixar ou clonar o repositório do projeto:
+
 ```
 docker-compose up -d
 ```
