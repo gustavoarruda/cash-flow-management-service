@@ -1,11 +1,28 @@
 # Serviço de Lançamentos de Fluxo de Caixa
 
-Serviço de lançamentos de fluxo de caixa com a finalidade de estudos.
+Serviço de lançamentos de fluxo de caixa com de atender um desafio técnico:
+
+### Desafio da Solução
+
+Um comerciante precisa controlar seu fluxo de caixa de caixa diário com lançamentos de débitos e créditos, também precisa de um relatorio que disponibilize o saldo diário consolidado.
+
+#### Requisitos de Negócio:
+
+* Serviço que faça o controle de lançamentos.
+* Serviço de consolidado diário
+
+#### Requisitos técnicos:
+
+* Desenho da solução
+* Pode ser feito na linguagem que você domina
+* Boas práticas são bem-vindas (Design Patterns, Padrões de arquiteura, SOLID, etc.)
+* Readme com instruções de como subir a aplicação local, container e utilização dos serviços
+* Hospedar em reposítório Público
+
+## Descrição do Projeto
 
 O projeto utiliza um serviço responsavel por receber as requisições de debito e credito via api rest e salvar os dados
-no banco de dado e enviar dados para o kafka atuando como producer, para que outro serviço (**consolidate-data-provider
-**)
-gere os saldo atuando como consumer.
+no banco de dado e enviar dados para o kafka atuando como producer, para que outro serviço **consolidate-data-provider** gere os saldo atuando como consumer.
 
 ### Versão Java
 
