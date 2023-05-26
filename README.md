@@ -59,11 +59,6 @@ em: https://hub.docker.com/repository/docker/gustavoanalistabr/cash-flow-service
 Para o ambiente de desenvolvimento, também está disponível um arquivo docker-compose, na pasta infra, que levanta os
 serviços de banco de dados, kafka e do Kafdrop para acessar cliente do kafka.
 
-### Swagger
-
-Para acessar o swagger do projeto, basta executar o projeto e acessar a url: http://localhost:8094/swagger-ui.html. O
-mesmo é dinâmico, gerado pelas anotações presentes nas classes Controller.
-
 ## Desenho de Arquiteura de Solução
 
 ### Fluxo de Lançamentos:
@@ -85,6 +80,11 @@ docker-compose up -d
 * Este projeto possui o kafka, que é compartilhado com o microsserviço **CONSOLIDATE-DATA-PROVIDER**.
 
 ## API de Lançamentos:
+
+### Swagger
+
+Para acessar o swagger do projeto, basta executar o projeto e acessar a url: http://localhost:8094/swagger-ui.html. O
+mesmo é dinâmico, gerado pelas anotações presentes nas classes Controller.
 
 ### - **Criar lançamentos:**
 
