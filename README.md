@@ -108,13 +108,13 @@ curl --location 'localhost:8094/v1/movement' \
 curl --location 'localhost:8094/v1/movement?date=2023-05-25&page=0&size=10'
 ```
 
-### - **Busca movimento por ID:**
+### - **Busca lançamentos por ID:**
 
 ```
 curl --location 'localhost:8094/v1/movement/127f2c03-61d3-46a9-a467-34d582c43fe0'
 ```
 
-### - **Atualiza movimento:**
+### - **Atualiza lançamentos:**
 
 ```
 curl --location --request PUT 'localhost:8094/v1/movement/de8b8' \
@@ -128,7 +128,7 @@ curl --location --request PUT 'localhost:8094/v1/movement/de8b8' \
 }'
 ```
 
-### - **Deleta movimento por ID:**
+### - **Deleta lançamentos por ID:**
 
 ```
 curl --location --request DELETE 'localhost:8094/v1/movement/127f2c03-61d3-46a9-a467-34d582c43fe0'
