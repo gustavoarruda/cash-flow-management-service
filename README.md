@@ -84,7 +84,9 @@ docker-compose up -d
 
 * Este projeto possui o kafka, que é compartilhado com o microsserviço **CONSOLIDATE-DATA-PROVIDER**.
 
-### - **Endpoint da API para realizar os lançamentos:**
+## API de Lançamentos:
+
+### - **Criar lançamentos:**
 
 ```
 curl --location 'localhost:8094/v1/movement' \
@@ -100,8 +102,28 @@ curl --location 'localhost:8094/v1/movement' \
 ]'
 ```
 
-### - **Endpoint da API para listar os lançamentos:**
+### - **Lista os lançamentos:**
 
 ```
 curl --location 'localhost:8094/v1/movement?date=2023-05-25&page=0&size=10'
+```
+
+### - **Busca movimento por ID:**
+
+```
+curl --location 'localhost:8094/v1/movement/127f2c03-61d3-46a9-a467-34d582c43fe0'
+```
+
+### - **Atualiza movimento:**
+
+```
+curl --location --request PUT 'localhost:8094/v1/movement/de8b8' \
+--header 'Content-Type: application/json' \
+--data '{
+"description" : "Atacadão Atacadista",
+"person_id" : "68110d6c-bc13-44a3-a576-75c23ed7e957",
+"date" : "2023-05-07",
+"type_movement" : "C",
+"value" : 1100.00
+}'
 ```
