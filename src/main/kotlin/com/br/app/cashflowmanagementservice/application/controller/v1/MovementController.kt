@@ -45,9 +45,8 @@ class MovementController(
         @RequestParam(defaultValue = "0") page: Int,
         @RequestParam(defaultValue = "10") size: Int,
         @RequestParam(value="date") @DateTimeFormat(pattern="yyyy-MM-dd") date: LocalDate
-    ): Page<Movement>? {
-        val pageRequest: PageRequest = PageRequest.of(page, size)
-        return movementService.getMovements(pageRequest)
+    ): ResponseEntity<List<Movement>> {
+        return ResponseEntity.ok(movementService.getMovements(date, page, size))
     }
 
     @ApiResponses(

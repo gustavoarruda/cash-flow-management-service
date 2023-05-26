@@ -7,9 +7,9 @@ import com.br.app.cashflowmanagementservice.domain.repository.MovementRepository
 import com.br.app.cashflowmanagementservice.domain.service.MovementService
 import com.br.app.cashflowmanagementservice.resource.messaging.entity.MovementStreamPayload
 import com.br.app.cashflowmanagementservice.resource.messaging.stream.MovementStreamProducer
-import org.springframework.data.domain.Page
-import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.*
 import org.springframework.stereotype.Service
+import java.time.LocalDate
 import java.util.*
 
 
@@ -38,8 +38,10 @@ class MovementServiceImpl(
         }.onFailure { throw it }
     }
 
-    override fun getMovements(pageable: Pageable): Page<Movement>? {
-        return movementRepository.findAll(pageable).map { it.toDomain() }
+    override fun getMovements(date: LocalDate, page: Int, size: Int): List<Movement> {
+        val pageRequest: PageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "date")
+        val movements = movementRepository.findByDate(date, pageRequest)
+        return movements.content.map { it.toDomain() }
     }
 
     override fun findById(id: String): Optional<Movement> {
