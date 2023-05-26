@@ -62,14 +62,14 @@ em: https://hub.docker.com/repository/docker/gustavoanalistabr/cash-flow-service
 Para o ambiente de desenvolvimento, também está disponível um arquivo docker-compose, na pasta infra, que levanta os
 serviços de banco de dados, kafka e do Kafdrop para acessar cliente do kafka.
 
-### Testes
+## Testes
 
-## Testes Unitários
+### Testes Unitários
 
 Este projeto contem testes unitários usando uma biblioteca de mocking chamada MockK e AssertJ, ronjunto de asserções, 
 mensagens de erro realmente úteis, melhora a legibilidade do código.
 
-## Testes Integrados
+### Testes Integrados
 
 Este projeto conterá testes unitários usando **testcontainers**. Esta fase está em desenvolvimento.
 
