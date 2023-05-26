@@ -1,5 +1,6 @@
 package com.br.app.cashflowmanagementservice.domain.entities
 
+import com.br.app.cashflowmanagementservice.application.entity.MovementPayload
 import com.br.app.cashflowmanagementservice.application.enums.TypeMovement
 import com.br.app.cashflowmanagementservice.domain.entities.entity.MovementEntity
 import java.math.BigDecimal
@@ -17,6 +18,15 @@ data class Movement(
 )
 
 fun Movement.toEntity() = MovementEntity(
+    id = id,
+    description = description,
+    personId = personId,
+    date = date,
+    typeMovement = typeMovement.type,
+    value = value
+)
+
+fun Movement.toPayload() = MovementPayload(
     id = id,
     description = description,
     personId = personId,

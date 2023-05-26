@@ -18,7 +18,7 @@ class MovementServiceImpl(
     private val movementRepository: MovementRepository,
     private val movementStreamProducer: MovementStreamProducer
 ) : MovementService {
-    override fun entry(movements: List<Movement>) {
+    override fun createMovement(movements: List<Movement>) {
         //println("entry log: " + movements.map { it.toString() })
         runCatching {
             movementRepository.saveAll(movements.map { it.toEntity() })
@@ -38,7 +38,7 @@ class MovementServiceImpl(
         }.onFailure { throw it }
     }
 
-    override fun getList(pageable: Pageable): Page<Movement>? {
+    override fun getMovements(pageable: Pageable): Page<Movement>? {
         return movementRepository.findAll(pageable).map { it.toDomain() }
     }
 
@@ -61,5 +61,7 @@ class MovementServiceImpl(
         return null
     }
 
-
+    override fun deleteMovement(id: String) {
+        movementRepository.deleteById(id)
+    }
 }
