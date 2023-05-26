@@ -10,6 +10,9 @@ spring:
     user:
       name: user
       password: user
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
