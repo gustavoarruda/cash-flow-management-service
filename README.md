@@ -71,7 +71,7 @@ mensagens de erro realmente úteis para melhora a legibilidade do código.
 
 ### Testes Integrados
 
-Este projeto conterá testes unitários usando **testcontainers**. Esta fase está em desenvolvimento.
+Este projeto conterá testes integrados usando **testcontainers**. Está em desenvolvimento.
 
 ## Desenho de Arquiteura de Solução
 
