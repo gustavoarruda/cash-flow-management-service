@@ -1,6 +1,6 @@
 # Serviço de Lançamentos de Fluxo de Caixa
 
-Serviço de lançamentos de fluxo de caixa com de atender um desafio técnico:
+Serviço de lançamentos de fluxo de caixa com a finalidade de atender um desafio técnico:
 
 ### Desafio da Solução
 
