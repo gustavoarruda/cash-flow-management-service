@@ -44,6 +44,9 @@ Foi utilizado como base do projeto o Spring Boot 2.7.12. Algumas bibliotecas adi
 * **org.postgresql** - Driver para postgres
 * **hibernate-validator** - Biblioteca adicional do Hibernate para adicionar os validadores JPA do Hibernate
 * **org.flywaydb** - Ferramenta para realizar *migrations* em bancos de dados, mantém os bancos atualizados em produção.
+* **io.mockk:mockk** - Mockk é uma biblioteca de mocking para kotlin que traz uma série de recursos como Spy, Relaxed 
+mock, Partial mocking, Object mocks, Class mock entre outros.
+* **org.testcontainers** - Testcontainers é uma biblioteca para instrumentar contêineres Docker para usá-los como parte de seus testes.
 
 ### Processamento assíncrono
 
@@ -58,6 +61,17 @@ em: https://hub.docker.com/repository/docker/gustavoanalistabr/cash-flow-service
 
 Para o ambiente de desenvolvimento, também está disponível um arquivo docker-compose, na pasta infra, que levanta os
 serviços de banco de dados, kafka e do Kafdrop para acessar cliente do kafka.
+
+### Testes
+
+## Testes Unitários
+
+Este projeto contem testes unitários usando uma biblioteca de mocking chamada MockK e AssertJ, ronjunto de asserções, 
+mensagens de erro realmente úteis, melhora a legibilidade do código.
+
+## Testes Integrados
+
+Este projeto conterá testes unitários usando **testcontainers**. Esta fase está em desenvolvimento.
 
 ## Desenho de Arquiteura de Solução
 
