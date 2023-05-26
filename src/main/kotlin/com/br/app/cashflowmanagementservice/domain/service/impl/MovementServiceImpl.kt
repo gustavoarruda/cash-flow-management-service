@@ -19,7 +19,6 @@ class MovementServiceImpl(
     private val movementStreamProducer: MovementStreamProducer
 ) : MovementService {
     override fun createMovement(movements: List<Movement>) {
-        //println("entry log: " + movements.map { it.toString() })
         runCatching {
             movementRepository.saveAll(movements.map { it.toEntity() })
         }.onSuccess {

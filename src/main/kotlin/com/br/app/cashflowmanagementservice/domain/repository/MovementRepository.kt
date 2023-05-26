@@ -1,6 +1,5 @@
 package com.br.app.cashflowmanagementservice.domain.repository
 
-
 import com.br.app.cashflowmanagementservice.domain.entities.entity.MovementEntity
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -11,4 +10,5 @@ import java.time.LocalDate
 @Repository
 interface MovementRepository : JpaRepository<MovementEntity, String> {
     fun findByDate(date: LocalDate, pageable: Pageable): Page<MovementEntity>
+    fun saveAll(movements: List<MovementEntity>): List<MovementEntity>
 }

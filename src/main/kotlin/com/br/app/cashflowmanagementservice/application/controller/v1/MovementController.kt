@@ -3,14 +3,11 @@ package com.br.app.cashflowmanagementservice.application.controller.v1
 import com.br.app.cashflowmanagementservice.application.entity.MovementPayload
 import com.br.app.cashflowmanagementservice.application.entity.toDomain
 import com.br.app.cashflowmanagementservice.domain.entities.Movement
-import com.br.app.cashflowmanagementservice.domain.entities.toPayload
 import com.br.app.cashflowmanagementservice.domain.service.MovementService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiResponse
 import io.swagger.annotations.ApiResponses
-import org.springframework.data.domain.Page
-import org.springframework.data.domain.PageRequest
 import org.springframework.format.annotation.DateTimeFormat
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -32,7 +29,8 @@ class MovementController(
     @ApiOperation("Create a new movement.")
     @PostMapping("/movement")
     @ResponseStatus(HttpStatus.CREATED)
-    fun createMovement(@RequestBody movements: List<MovementPayload>) = movementService.createMovement(movements.map { it.toDomain() })
+    fun createMovement(@RequestBody movements: List<MovementPayload>) =
+        movementService.createMovement(movements.map { it.toDomain() })
 
     @ApiResponses(
         ApiResponse(code = 200, message = "Successfully retrieved movements"),
@@ -44,7 +42,7 @@ class MovementController(
     fun getMovements(
         @RequestParam(defaultValue = "0") page: Int,
         @RequestParam(defaultValue = "10") size: Int,
-        @RequestParam(value="date") @DateTimeFormat(pattern="yyyy-MM-dd") date: LocalDate
+        @RequestParam(value = "date") @DateTimeFormat(pattern = "yyyy-MM-dd") date: LocalDate
     ): ResponseEntity<List<Movement>> {
         return ResponseEntity.ok(movementService.getMovements(date, page, size))
     }
