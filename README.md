@@ -66,8 +66,8 @@ serviços de banco de dados, kafka e do Kafdrop para acessar cliente do kafka.
 
 ### Testes Unitários
 
-Este projeto contem testes unitários usando uma biblioteca de mocking chamada MockK e AssertJ, ronjunto de asserções, 
-mensagens de erro realmente úteis, melhora a legibilidade do código.
+Este projeto contem testes unitários usando uma biblioteca de mocking chamada MockK e AssertJ, conjunto de asserções, 
+mensagens de erro realmente úteis para melhora a legibilidade do código.
 
 ### Testes Integrados
 
